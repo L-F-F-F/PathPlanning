@@ -19,4 +19,16 @@
 ## 2 A* ##
 启发式搜索，能找到最短路径，快
 
-思路跟Dijkstra相近，再选择下一个搜索点的时候， **f(n) = g(n) + h(n)** ， g(n)表示从初始结点到任意结点n的代价，h(n)表示从结点n到目标点的启发式评估代价。
+介绍的博客，[一](https://blog.csdn.net/zhulichen/article/details/78786493)，[二](https://blog.csdn.net/denghecsdn/article/details/78778769)，[三](https://blog.csdn.net/dazhushenxu/article/details/77833023)
+
+思路跟Dijkstra相近，两个集合分别存放已经搜寻的点和未完成搜寻的点，在选择下一个搜索点的时候， **f(n) = g(n) + h(n)** ， g(n)表示从初始结点到任意结点n的代价，h(n)表示从结点n到目标点的启发式评估代价。如果说 h(n)=0，那么f(n) = g(n)，A* 退化为 Dijkstra，如果 h(n) 非常大，远大于 g(n)，那么 f(n) = h(n) ，演变为 最佳优先搜索（BFS）。
+
+所以说启发式函数 h(n) 至关重要。如果满足： **h(n) <= 从n移动到目标的实际代价** ，则 A\*保证能找到一条最短路径。h(n)越小，A\*扩展的结点越多，运行就得越慢。
+
+网格地图中常用距离 h(n)： D 系数  
+曼哈顿距离：h(n) = D * (abs ( n.x – goal.x ) + abs ( n.y – goal.y ) )  
+对角线距离：h(n) = D * max(abs(n.x - goal.x), abs(n.y - goal.y))  
+欧氏距离：h(n) = D * sqrt((n.x-goal.x)^2 + (n.y-goal.y)^2)  
+欧式距离平方：h(n) = D * ((n.x-goal.x)^2 + (n.y-goal.y)^2)
+
+A*算法和 Dijkstra 都需要维护两个表，open，closed。每次都要从open中找最小的节点，节点少的话遍历 O(N) 就行，如果节点数非常多，可以考虑使用二叉堆维护，每次调整堆 O(log N)。
