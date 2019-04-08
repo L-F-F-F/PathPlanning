@@ -19,7 +19,7 @@
 ## 2 A* ##
 启发式搜索，能找到最短路径，快
 
-介绍的博客，[一](https://blog.csdn.net/zhulichen/article/details/78786493)，[二](https://blog.csdn.net/denghecsdn/article/details/78778769)，[三](https://blog.csdn.net/dazhushenxu/article/details/77833023)
+介绍的博客，[一](https://blog.csdn.net/zhulichen/article/details/78786493)，[二](https://blog.csdn.net/denghecsdn/article/details/78778769)，[三](https://blog.csdn.net/dazhushenxu/article/details/77833023)  ![image](https://i.imgur.com/3d0KvPf.gif)
 
 思路跟Dijkstra相近，两个集合分别存放已经搜寻的点和未完成搜寻的点，在选择下一个搜索点的时候， **f(n) = g(n) + h(n)** ， g(n)表示从初始结点到任意结点n的代价，h(n)表示从结点n到目标点的启发式评估代价。如果说 h(n)=0，那么f(n) = g(n)，A* 退化为 Dijkstra，如果 h(n) 非常大，远大于 g(n)，那么 f(n) = h(n) ，演变为 最佳优先搜索（BFS）。
 
@@ -32,3 +32,7 @@
 欧式距离平方：h(n) = D * ((n.x-goal.x)^2 + (n.y-goal.y)^2)
 
 A*算法和 Dijkstra 都需要维护两个表，open，closed。每次都要从open中找最小的节点，节点少的话遍历 O(N) 就行，如果节点数非常多，可以考虑使用二叉堆维护，每次调整堆 O(log N)。
+
+## 3 PRM ##
+随机路图（Probabilistic Road Maps，PRM）就是在规划空间内随机选取N个节点，之后连接各节点，并去除与障碍物接触的连线，由此得到一个随机路图。  
+显然，当采样点太少，或者分布不合理时，PRM算法是不完备的，但是随着采用点的增加，也可以达到完备。所以PRM是概率完备且不最优的。
