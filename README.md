@@ -77,3 +77,5 @@ Simulate Anneal，模拟退火算法，组合优化类问题通用解法
 1、路径概率选择机制信息素踪迹越浓的路径,被选中的概率越大  
 2、信息素更新机制路径越短,路径上的信息素踪迹增长得越快  
 3、协同工作机制蚂蚁个体通过信息素进行信息交流。
+
+[大连理工谷俊峰老师的PDF课件](https://github.com/L-F-F-F/PathPlanning/blob/master/%E8%9A%81%E7%BE%A4%E7%AE%97%E6%B3%95%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86.pdf)
