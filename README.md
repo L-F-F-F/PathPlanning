@@ -1,3 +1,5 @@
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+
 # PathPlanning
 ---
 ![](https://i.imgur.com/6nvPKi0.jpg)
@@ -54,5 +56,14 @@ Genetic Algorithm，遗传算法，启发式，组合优化类问题通用解法
 3、适应度函数、评价函数：函数最值问题通常是 f(X)。路径问题通常是 M+1 条边路径距离之和。  
 4、选择：根据适应度函数，轮盘赌的方式选择两个个体作为父方、母方。路径问题就是在这 N 条路径中选择需要交叉的两条路径。  
 5、交叉：选择的父方、母方，根据编码，随机一个片段交换，生成子代。两条路径交换拼接其中一段。  
-6、变异：随机编码中的某一位、某几位改变。路径中改变某个点位置。
+6、变异：随机编码中的某一位、某几位改变。路径中改变某个点位置。  
 7、终止条件：迭代轮数，运算精度，或者收敛即可
+
+## 6 SA ##
+Simulate Anneal，模拟退火算法，组合优化类问题通用解法
+
+![](https://i.imgur.com/iTXTWkT.jpg)
+
+流程同 GA 遗传算法 类似，过程没有那么多，只是在考虑状态转移的过程中，遵循Metropolis准则：  
+如果 E(Xnew) <= E(Xold) , 能量低直接转移状态  
+如果 E(Xnew) > E(Xold) , 状态转移的概率为 $ x $
